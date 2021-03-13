@@ -6,6 +6,10 @@ class App{
         return $conn;
     }
 
+	static function redirect($p){
+		header("location:{$p}");
+	}
+
 	static function parameterRoute($action,$callback){
 		if(isset($_GET["action"])){
 			$action_ = $_GET["action"];
@@ -21,9 +25,9 @@ class App{
         $data = $query->fetchAll();
 		return $data;
     }
-	static function save(){
-		$x='sdsadsad';
-		$statm = App::DB()->prepare("INSERT INTO flights (departure,destination,flight_duration) values ('$x','sadfa',0.9)");
+	static function save($dep,$des,$f_d){
+		$statm = App::DB()->prepare("INSERT INTO flights (departure,destination,flight_duration) values ('$dep','$des','$f_d')");
 		$statm->execute();
+		return App::redirect("index.php?action=show");
 	}
 }
