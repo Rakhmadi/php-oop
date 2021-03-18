@@ -10,9 +10,7 @@ App::parameterRoute('tambah',function(){
     }
 });
 
-App::parameterRoute('echo',function(){
-	echo $_POST['des'];
-});
+App::parameterRoute('echo','App::echo');
 
 App::parameterRoute('show',function(){
 	foreach(App::show() as $x){
@@ -21,9 +19,7 @@ App::parameterRoute('show',function(){
 	}
 });
 
-App::parameterRoute('save',function(){
-	App::save($_POST['departure'],$_POST['destination'],$_POST['f_']);
-});
+App::parameterRoute('save','App::save');
 
 ?>
 <h1>Hello</h1>
